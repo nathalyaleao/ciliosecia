@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { AnimatedSection } from "./AnimatedSection";
-import { Star } from "lucide-react";
+import { Star, MessageSquareQuote } from "lucide-react";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
@@ -42,20 +42,25 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section id="depoimentos" className="py-20 md:py-32 bg-card overflow-hidden">
+    <section id="depoimentos" className="py-20 md:py-32 bg-[#faf9f6] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
+        
+        {/* CABEÇALHO */}
         <AnimatedSection className="text-center mb-16" direction="up">
-          <span className="inline-block text-sm text-muted-foreground mb-4">
-            Depoimentos
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium tracking-wide mb-4">
+            <MessageSquareQuote size={14} fill="currentColor" />
+            {/* TRADUZIDO AQUI 👇 */}
+            <span>Notas de Carinho</span>
+          </div>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             O que dizem nossos clientes
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
             Histórias reais de transformação e satisfação
           </p>
         </AnimatedSection>
 
+        {/* PRIMEIRA LINHA */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.slice(0, 3).map((testimonial, index) => (
             <motion.div
@@ -68,32 +73,32 @@ export const Testimonials = () => {
                 delay: index * 0.15,
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
-              className="bg-background rounded-3xl p-8 border border-border"
+              className="bg-white rounded-[2rem] p-8 border-2 border-primary/20 hover:border-primary transition-colors duration-300"
             >
               <div className="flex gap-1 mb-6">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} fill="currentColor" className="text-foreground" />
+                  <Star key={i} size={16} fill="currentColor" className="text-yellow-400" />
                 ))}
               </div>
-              <p className="text-foreground mb-6 leading-relaxed">"{testimonial.text}"</p>
+              <p className="text-gray-600 mb-6 leading-relaxed italic">"{testimonial.text}"</p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-muted">
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-primary/30 p-0.5">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover rounded-full"
                   />
                 </div>
                 <div>
-                  <p className="font-heading font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+                  <p className="font-heading font-semibold text-gray-900">{testimonial.name}</p>
+                  <p className="text-sm text-primary/80">{testimonial.company}</p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Second row */}
+        {/* SEGUNDA LINHA */}
         <div className="grid md:grid-cols-2 gap-6 mt-6 max-w-4xl mx-auto">
           {testimonials.slice(3).map((testimonial, index) => (
             <motion.div
@@ -106,25 +111,25 @@ export const Testimonials = () => {
                 delay: index * 0.15,
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
-              className="bg-background rounded-3xl p-8 border border-border"
+              className="bg-white rounded-[2rem] p-8 border-2 border-primary/20 hover:border-primary transition-colors duration-300"
             >
               <div className="flex gap-1 mb-6">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} fill="currentColor" className="text-foreground" />
+                  <Star key={i} size={16} fill="currentColor" className="text-yellow-400" />
                 ))}
               </div>
-              <p className="text-foreground mb-6 leading-relaxed">"{testimonial.text}"</p>
+              <p className="text-gray-600 mb-6 leading-relaxed italic">"{testimonial.text}"</p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-muted">
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-primary/30 p-0.5">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover rounded-full"
                   />
                 </div>
                 <div>
-                  <p className="font-heading font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+                  <p className="font-heading font-semibold text-gray-900">{testimonial.name}</p>
+                  <p className="text-sm text-primary/80">{testimonial.company}</p>
                 </div>
               </div>
             </motion.div>

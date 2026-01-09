@@ -1,86 +1,87 @@
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram, Facebook, MapPin, Phone, Mail } from "lucide-react";
 
 export const Footer = () => {
+  const instagramLink = "https://www.instagram.com/cilioseciastudio/";
+
   return (
-    <footer className="py-12 bg-background border-t border-border">
+    // VOLTEI PARA O PADRÃO "PY-12": Espaçamento equilibrado em cima e embaixo, como antes.
+    <footer className="bg-white border-t-2 border-primary/20 py-12">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
-          <div className="md:col-span-2">
-            <a href="#" className="font-heading font-bold text-xl text-foreground mb-4 block">
-              Meu Negócio
+        
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
+          {/* COLUNA 1: MARCA */}
+          <div className="md:col-span-2 space-y-4">
+            <a href="#" className="font-heading font-bold text-2xl text-gray-900 block">
+              Cilios e <span className="text-primary">Cia</span>
             </a>
-            <p className="text-sm text-muted-foreground max-w-sm mb-6">
-              Especialistas em design de cílios e sobrancelhas. Transforme seu olhar com técnicas modernas e atendimento personalizado.
+            <p className="text-gray-500 max-w-sm text-sm leading-relaxed">
+              Especialistas em design de cílios e sobrancelhas. Transforme seu olhar com técnicas modernas, segurança e um atendimento que você merece.
             </p>
-            <div className="flex gap-4">
+            
+            {/* Redes Sociais */}
+            <div className="flex gap-4 pt-2">
               <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-accent transition-colors duration-200"
+                href={instagramLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
               >
                 <Instagram size={18} strokeWidth={1.5} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground hover:bg-accent transition-colors duration-200"
+                className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
               >
                 <Facebook size={18} strokeWidth={1.5} />
               </a>
             </div>
           </div>
+
+          {/* COLUNA 2: NAVEGAÇÃO */}
           <div>
-            <h4 className="font-heading font-semibold text-foreground mb-4">Navegação</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="#servicos" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                  Serviços
-                </a>
-              </li>
-              <li>
-                <a href="#planos" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                  Planos
-                </a>
-              </li>
-              <li>
-                <a href="#depoimentos" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                  Depoimentos
-                </a>
-              </li>
-              <li>
-                <a href="#blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                  Blog
-                </a>
-              </li>
+            <h4 className="font-heading font-bold text-gray-900 mb-4">Navegação</h4>
+            <ul className="space-y-3 text-sm">
+              {['Serviços', 'Planos', 'Depoimentos', 'Blog'].map((item) => (
+                <li key={item}>
+                  <a 
+                    href={`#${item.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")}`}
+                    className="text-gray-500 hover:text-primary transition-colors duration-200 block"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
+
+          {/* COLUNA 3: CONTATO */}
           <div>
-            <h4 className="font-heading font-semibold text-foreground mb-4">Contato</h4>
-            <ul className="space-y-3">
-              <li className="text-sm text-muted-foreground">
-                Av. Paulista, 1000
+            <h4 className="font-heading font-bold text-gray-900 mb-4">Contato</h4>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-3 text-gray-500">
+                <MapPin size={16} className="text-primary mt-0.5 shrink-0" />
+                <span>Manaus, AM</span>
               </li>
-              <li className="text-sm text-muted-foreground">
-                São Paulo, SP
+              <li className="flex items-center gap-3 text-gray-500">
+                <Phone size={16} className="text-primary shrink-0" />
+                <span>(92) 99415-2566</span>
               </li>
-              <li className="text-sm text-muted-foreground">
-                (11) 99999-9999
-              </li>
-              <li className="text-sm text-muted-foreground">
-                contato@meunegocio.com
+              <li className="flex items-center gap-3 text-gray-500">
+                <Mail size={16} className="text-primary shrink-0" />
+                <span>contato@ciliosecia.com.br</span>
               </li>
             </ul>
           </div>
         </div>
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © 2024 Meu Negócio. Todos os direitos reservados.
+
+        {/* RODAPÉ DO RODAPÉ (Igual ao print: dispersado e limpo) */}
+        <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+          <p className="text-center md:text-left">
+            © 2026 Cilios e Cia Studio. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-              Política de Privacidade
-            </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-              Termos de Uso
-            </a>
+            <a href="#" className="hover:text-primary transition-colors">Política de Privacidade</a>
+            <a href="#" className="hover:text-primary transition-colors">Termos de Uso</a>
           </div>
         </div>
       </div>

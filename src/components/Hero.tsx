@@ -1,83 +1,156 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import heroEyebrow from "@/assets/hero-eyebrow.jpg";
+import { ArrowRight, Star } from "lucide-react";
+import heroEyebrow from "@/assets/hero-eyebrow.jpg"; 
 
 export const Hero = () => {
-  return (
-    // AJUSTE 1: Padding menor no celular (pt-24 pb-12) e grande no PC (md:pt-40)
-    <section className="relative pt-24 pb-12 md:pt-40 md:pb-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* AJUSTE 2: Gap de 8 no celular para aproximar o texto das imagens */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Text Content */}
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <span className="inline-block text-sm text-muted-foreground mb-4">
-              Realce seu olhar
-            </span>
-            {/* AJUSTE 3: Fonte 3xl no celular para caber melhor */}
-            <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-              Design de Cílios e Sobrancelhas
-            </h1>
-            <p className="text-lg text-muted-foreground mb-8 max-w-lg">
-              Técnicas modernas para realçar a beleza natural do seu olhar. Agende sua avaliação e descubra o poder de um olhar marcante.
-            </p>
-            
-            {/* AJUSTE 4: Botões Responsivos */}
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="#contato"
-                // Celular: px-8 py-3 text-base (Tamanho seguro)
-                // PC: md:px-12 md:py-5 md:text-lg (Botão Grande)
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 text-base md:px-12 md:py-5 md:text-lg rounded-full font-medium hover:bg-primary/90 transition-colors duration-200"
-              >
-                Agendar 
-                <ArrowRight size={16} strokeWidth={1.5} />
-              </a>
-              <a
-                href="#servicos"
-                // Mesma lógica aqui
-                className="inline-flex items-center gap-2 text-foreground px-8 py-3 text-base md:px-12 md:py-5 md:text-lg rounded-full font-medium border border-border hover:bg-accent transition-colors duration-200"
-              >
-                Ver serviços
-              </a>
-            </div>
-          </motion.div>
+  const whatsappLink = "https://wa.me/5592994152566?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20agendar.";
 
-          {/* Image Grid */}
+  return (
+    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#faf9f6]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* LADO ESQUERDO: TEXTOS */}
+          <div className="text-left">
+            
+            {/* 1. A Etiqueta */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium tracking-wide mb-6"
+            >
+              <Star size={14} fill="currentColor" />
+              <span>Cílios & Sobrancelhas Premium</span>
+            </motion.div>
+
+            {/* 2. O Título */}
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.1] mb-6"
+            >
+             Seu olhar merece ser <br />
+              <span className="text-primary italic font-serif ">inesquecível</span>
+            </motion.h1>
+            
+            {/* 3. O Parágrafo */}
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed"
+            >
+              Especialistas em design de olhar. Do clássico Fio a Fio ao moderno Brow Lamination, cuidamos de cada detalhe do seu rosto.
+            </motion.p>
+            
+            {/* 4. Os Botões */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-wrap gap-4"
+            >
+              <motion.a
+                href={whatsappLink}
+                whileHover={{ scale: 1.05 }} 
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 text-lg rounded-full font-medium shadow-lg shadow-primary/25 transition-all hover:shadow-primary/40"
+              >
+                Agendar Horário
+                <ArrowRight size={18} />
+              </motion.a>
+              
+              <motion.a
+                href="#servicos"
+                whileHover={{ scale: 1.05, backgroundColor: "#f3f4f6" }}
+                className="inline-flex items-center gap-2 text-gray-600 bg-white px-8 py-4 text-lg rounded-full font-medium border border-gray-200 shadow-sm transition-all"
+              >
+                Ver Catálogo
+              </motion.a>
+            </motion.div>
+
+            {/* --- NOVO: IMAGEM ESPECIAL PARA CELULAR (SÓ APARECE NO MOBILE) --- */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mt-10 block lg:hidden rounded-2xl overflow-hidden shadow-xl aspect-[4/3]"
+            >
+              {/* Usando a foto de resultado que é mais impactante */}
+              <img 
+                src="/resultado.jpg" 
+                alt="Resultado Cílios Mobile" 
+                className="w-full h-full object-cover" 
+              />
+            </motion.div>
+            {/* ------------------------------------------------------------------ */}
+
+            {/* 5. A Prova Social */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mt-10 flex items-center gap-4 text-sm text-gray-500"
+            >
+              <div className="flex -space-x-3">
+                <div className="w-10 h-10 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center overflow-hidden">
+                   <span className="text-xs">User</span> 
+                </div>
+                <div className="w-10 h-10 rounded-full bg-gray-300 border-2 border-white flex items-center justify-center overflow-hidden">
+                   <span className="text-xs">User</span> 
+                </div>
+                <div className="w-10 h-10 rounded-full bg-gray-400 border-2 border-white flex items-center justify-center overflow-hidden">
+                   <span className="text-xs">User</span> 
+                </div>
+              </div>
+              <p>+500 clientes atendidas em Manaus</p>
+            </motion.div>
+          </div>
+
+          {/* LADO DIREITO: IMAGENS PC (Mantive oculto no mobile "hidden lg:block") */}
           <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative hidden lg:block"
           >
-            <div className="grid grid-cols-2 gap-4">
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="aspect-[3/4] rounded-3xl overflow-hidden bg-muted"
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/5 rounded-full blur-3xl -z-10" />
+
+            <div className="grid grid-cols-2 gap-4 items-center">
+              <motion.div 
+                whileHover={{ y: -10 }} 
+                className="space-y-4 mt-12"
               >
-                <img
-                  src= "/resultado.jpg"
-                  alt="Serviço de cílios"
-                  className="w-full h-full object-cover"
-                />
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+                  <img src="/resultado.jpg" alt="Cílios" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+                </div>
               </motion.div>
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="aspect-[3/4] rounded-3xl overflow-hidden bg-muted mt-8"
+              
+              <motion.div 
+                whileHover={{ y: -10 }}
+                className="space-y-4"
               >
-                <img
-                  src={heroEyebrow}
-                  alt="Serviço de sobrancelhas"
-                  className="w-full h-full object-cover"
-                />
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+                  <img src={heroEyebrow} alt="Sobrancelhas" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+                </div>
+                
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 }}
+                  className="bg-white p-4 rounded-xl shadow-xl border border-gray-100 absolute -bottom-10 -left-10 w-48"
+                >
+                  <div className="flex text-yellow-400 mb-1">
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                  </div>
+                  <p className="text-xs font-bold text-gray-900">"Melhor studio de Manaus!"</p>
+                </motion.div>
               </motion.div>
             </div>
           </motion.div>
