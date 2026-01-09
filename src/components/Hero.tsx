@@ -27,12 +27,13 @@ export const Hero = () => {
             {/* 2. O Título */}
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
+              
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.1] mb-6"
             >
-             Seu olhar merece ser <br />
-              <span className="text-primary italic font-serif ">inesquecível</span>
+             Seu olhar merece ser <span className="text-primary italic font-serif ">inesquecível</span> <br />
+            
             </motion.h1>
             
             {/* 3. O Parágrafo */}
